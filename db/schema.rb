@@ -10,19 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_063353) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_081247) do
+  create_table "drivers", force: :cascade do |t|
+    t.string "license_no"
+    t.string "name"
+    t.integer "years_of_experience"
+    t.string "vehicle_type_licensed"
+    t.string "home_location"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "company_name"
     t.string "task_description"
     t.string "task_location_departure"
     t.string "task_destination"
-    t.string "estimated_distance_in_km"
+    t.integer "estimated_distance_in_km"
   end
 
   create_table "vehicles", force: :cascade do |t|
     t.string "vehicle_type"
     t.string "registration_no"
     t.string "vehicle_image_url"
+    t.integer "task_id"
+    t.integer "driver_id"
   end
 
 end

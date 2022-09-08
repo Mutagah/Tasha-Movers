@@ -1,6 +1,6 @@
 class ApplicationController < Sinatra::Base
     set :default_content_type, "application/json"
-    # specialization :allow_methods, "GET, HEAD, POST, PUT, OPTIONS, DELETE"
+    # task :allow_methods, "GET, HEAD, POST, PUT, OPTIONS, DELETE"
     set :allow_origin, "http:/localhost:3000"
      set :bind, '0.0.0.0'
   configure do
@@ -10,13 +10,13 @@ class ApplicationController < Sinatra::Base
     response.headers['Access-Control-Allow-Origin'] = '*'
   end
   
-  # # routes...
-  # options "*" do
-  #   response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
-  #   response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
-  #   response.headers["Access-Control-Allow-Origin"] = "*"
-  #   200
-  # end
+  # routes...
+  options "*" do
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
+  end
 
 
     #get method
@@ -83,7 +83,7 @@ class ApplicationController < Sinatra::Base
           name: params[:name],
           years_of_experience: params[:years_of_experience],
           vehicle_type_licensed: params[:vehicle_type_licensed],
-          home_location: params[:home_location]
+          home_location: params[:home_location], driver_image_url: params[:driver_image_url]
         )
         driver.to_json
       end

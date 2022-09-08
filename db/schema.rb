@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_081247) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_082844) do
   create_table "drivers", force: :cascade do |t|
     t.string "license_no"
     t.string "name"
     t.integer "years_of_experience"
     t.string "vehicle_type_licensed"
     t.string "home_location"
+    t.string "driver_image_url"
   end
 
   create_table "tasks", force: :cascade do |t|

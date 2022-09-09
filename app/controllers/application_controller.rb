@@ -26,20 +26,27 @@ class ApplicationController < Sinatra::Base
             task.to_json
         end
 
-        get "/tasks" do
-           task = Task.all
-           task.to_json
+        get "/vehicalls" do
+           vehicle = Vehicle.all
+           vehicle.to_json(include: :task)
+        end
+        
+        delete "/vehicalls/:id" do
+          vehicle = Vehicle.find(params[:id])
+          vehicle.destroy
+          vehicle.to_json(include: :task)
+
         end
 
 
-        get '/vehicles/:id' do
-            vehicle = Vehicle.find(params[:id])
-            vehicle.to_json
-        end
+        # get '/vehicals/:id' do
+        #     vehicle = Vehicle.find(params[:id])
+        #     vehicle.to_json
+        # end
 
-        get "/vehicles" do
-            vehicles = Vehicle.all
-            vehicles.to_json
+         get "/vehicles" do
+             vehicles = Vehicle.all
+             vehicles.to_json
         end
 
 
